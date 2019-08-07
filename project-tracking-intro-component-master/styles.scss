@@ -1,0 +1,119 @@
+$body-font: 'Barlow', sans-serif;
+$secondary-font: 'Barlow Condensed', sans-serif;
+
+$greyish-blue: hsl(231, 7%, 65%);
+$very-dark-blue: hsl(230, 29%, 20%);
+$dark-greyish-blue: hsl(230, 11%, 40%);
+$light-greyish-blue: hsl(207, 33%, 95%);
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $secondary-font;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  margin: 20px 0 30px 0;
+}
+
+header,
+section,
+footer {
+  padding: 0 30px;
+}
+
+.background {
+  background-color: $light-greyish-blue;
+  width: 300px;
+  height: 420px;
+  border-radius: 35px;
+  position: absolute;
+  right: -100px;
+  top: -50px;
+  z-index: -10;
+}
+
+ul {
+  background-color: hsl(360, 100%, 100%);
+  border-radius: 4px;
+  box-shadow: 10px 10px 30px rgba(171,171,171,1);
+  font-size: 2rem;
+  left: 50%;
+  list-style: none;
+  margin: 0 auto;
+  padding: 20px;
+  position: absolute;
+  text-align: center;
+  top: 50px;
+  transform: translateX(-50%);
+  width: 300px;
+
+  li {
+    text-transform: uppercase;
+    padding: 20px 0;
+    font-weight: 700;
+    font-family: $secondary-font;
+  }
+
+  li:last-child {
+    border-top: 1px solid $greyish-blue;
+    color: $greyish-blue;
+  }
+
+  &.active {
+    display: block;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.hero-image {
+  img {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+}
+
+button.menu {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+
+h2 {
+  text-transform: uppercase;
+  color: $greyish-blue;
+  font-family: $body-font;
+  font-size: 1.5rem;
+  margin: 0 0 0 10px;
+  letter-spacing: 4px;
+}
+
+.callout {
+  display: flex;
+  align-items: center;
+
+  .callout__button--black {
+    background-color: $very-dark-blue;
+    border-radius: 50px;
+    color: hsl(360, 100%, 100%);
+    font-weight: 700;
+    height: 25px;
+    padding: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 50px;
+  }
+}
