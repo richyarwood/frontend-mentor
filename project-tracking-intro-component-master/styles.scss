@@ -18,6 +18,19 @@ body {
   font-family: $secondary-font;
   font-size: 1.6rem;
   margin: 0;
+  position: relative;
+}
+
+body::before {
+  background-color: $light-greyish-blue;
+  content: "";
+  width: 300px;
+  height: 420px;
+  border-radius: 35px;
+  position: absolute;
+  right: -100px;
+  top: -50px;
+  z-index: -10;
 }
 
 header {
@@ -30,17 +43,6 @@ header,
 section,
 footer {
   padding: 0 30px;
-}
-
-.background {
-  background-color: $light-greyish-blue;
-  width: 300px;
-  height: 420px;
-  border-radius: 35px;
-  position: absolute;
-  right: -100px;
-  top: -50px;
-  z-index: -10;
 }
 
 ul {
@@ -89,6 +91,8 @@ ul {
 button {
 
   &.hamburger-menu {
+    background: none;
+    border: none;
     cursor: pointer;
     font-size: 2rem;
     position: absolute;
@@ -109,9 +113,9 @@ h2 {
   text-transform: uppercase;
   color: $greyish-blue;
   font-family: $body-font;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 0 0 0 10px;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
 }
 
 p {
@@ -120,11 +124,11 @@ p {
   font-size: 2rem;
 
   &.paragraph--uppercase {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
     display: inline;
     color: $greyish-blue;
-    letter-spacing: 1.4px;
+    letter-spacing: 0.9px;
   }
 }
 
@@ -150,10 +154,9 @@ p {
   &--red {
     background-color: hsl(0, 100%, 68%);
     display: inline-block;
-    width: 150px;
     color: hsl(0,100%,100%);
     border-radius: 7px;
-    padding: 10px 0;
+    padding: 10px 10px;
     text-transform: uppercase;
     margin-right: 10px;
     font-weight: 700;
@@ -162,10 +165,79 @@ p {
 
 footer {
 
-  margin-top: 60px;
-
   p {
     font-size: 1rem;
   }
 
+}
+
+
+@media (min-width: 800px) {
+
+  .grid__wrapper {
+    display: grid;
+    grid-template-rows: 100px auto 100px;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1440px;
+
+    grid-template-areas: 
+      "head head"
+      "main-left main-right"
+      "footer footer";
+  }
+
+  header {
+    grid-area: head;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .grid--left {
+    grid-area: main-left;
+    align-self: center;
+  }
+
+  .grid--right {
+    grid-area: main-right;
+    align-self: center;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+  ul {
+    background: none;
+    box-shadow: none;
+    position: static;
+    font-size: 2rem;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    transform: none;
+    width: 100%;
+  
+    li {
+      display: inline;
+      font-weight: 700;
+      font-family: $secondary-font;
+      margin-left: 40px;
+      text-transform: uppercase;
+    }
+  
+    li:last-child {
+      border: none;
+      color: $greyish-blue;
+    }
+  
+    &.hidden {
+      display: block;
+    }
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+  
 }
