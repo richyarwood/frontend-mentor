@@ -19,19 +19,21 @@ body {
   font-size: 1.6rem;
   margin: 0;
   position: relative;
+  
+  &::before {
+    background-color: $light-greyish-blue;
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 35px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+    z-index: -10;
+  }
 }
 
-body::before {
-  background-color: $light-greyish-blue;
-  content: "";
-  width: 300px;
-  height: 420px;
-  border-radius: 35px;
-  position: absolute;
-  right: -100px;
-  top: -50px;
-  z-index: -10;
-}
 
 header {
   position: relative;
@@ -65,12 +67,27 @@ ul {
     padding: 20px 0;
     font-weight: 700;
     font-family: $secondary-font;
+    
+    &.navigation--separator {
+      display: none;
+    }
+    
+    a {
+      text-decoration: none;
+      color: hsl(360, 0%, 0%);
+
+    }
+
+    &:last-child {
+      border-top: 1px solid $greyish-blue;
+      
+      a {
+        color: $greyish-blue;
+      }
+    }
+
   }
 
-  li:last-child {
-    border-top: 1px solid $greyish-blue;
-    color: $greyish-blue;
-  }
 
   &.active {
     display: block;
@@ -102,11 +119,10 @@ button {
 
 }
 
-
 h1 {
   text-transform: uppercase;
   font-size: 3.5rem;
-  line-height: 36px;
+  line-height: 3.5rem;
 }
 
 h2 {
@@ -157,6 +173,7 @@ p {
     color: hsl(0,100%,100%);
     border-radius: 7px;
     padding: 10px 10px;
+    cursor: pointer;
     text-transform: uppercase;
     margin-right: 10px;
     font-weight: 700;
@@ -166,12 +183,17 @@ p {
 footer {
 
   p {
-    font-size: 1rem;
+    font-size: 1.6rem;
   }
 
 }
 
+/*
+******************************
+*        MEDIA QUERIES       *
+******************************
 
+*/
 @media (min-width: 800px) {
 
   .grid__wrapper {
@@ -222,8 +244,14 @@ footer {
       display: inline;
       font-weight: 700;
       font-family: $secondary-font;
-      margin-left: 40px;
+      margin-left: 70px;
       text-transform: uppercase;
+
+      &.navigation--separator {
+        display: block;
+        font-size: 1rem;
+        color: $greyish-blue;
+      }
     }
   
     li:last-child {
@@ -232,12 +260,42 @@ footer {
     }
   
     &.hidden {
-      display: block;
+      display: flex;
+      align-items: center;
     }
   }
 
   .hamburger-menu {
     display: none;
+  }
+
+  h1 {
+    font-size: 8rem;
+    line-height: 8rem;
+  }
+
+  p {
+    font-size: 4rem;
+    padding-right: 30px;
+  }
+
+  .button {
+
+    &--red {
+      font-size: 2rem;
+      padding: 20px 20px;
+      text-transform: uppercase;
+      margin-right: 10px;
+      font-weight: 700;
+    }
+  }
+  
+  p {
+  
+    &.paragraph--uppercase {
+      font-size: 2rem;
+      letter-spacing: 0.5rem;
+    }
   }
   
 }

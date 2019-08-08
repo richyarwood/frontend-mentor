@@ -9,17 +9,17 @@ body {
   font-size: 1.6rem;
   margin: 0;
   position: relative; }
-
-body::before {
-  background-color: #eef3f6;
-  content: "";
-  width: 300px;
-  height: 420px;
-  border-radius: 35px;
-  position: absolute;
-  right: -100px;
-  top: -50px;
-  z-index: -10; }
+  body::before {
+    background-color: #eef3f6;
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 35px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+    z-index: -10; }
 
 header {
   position: relative;
@@ -50,9 +50,15 @@ ul {
     padding: 20px 0;
     font-weight: 700;
     font-family: "Barlow Condensed", sans-serif; }
-  ul li:last-child {
-    border-top: 1px solid #a0a1ac;
-    color: #a0a1ac; }
+    ul li.navigation--separator {
+      display: none; }
+    ul li a {
+      text-decoration: none;
+      color: black; }
+    ul li:last-child {
+      border-top: 1px solid #a0a1ac; }
+      ul li:last-child a {
+        color: #a0a1ac; }
   ul.active {
     display: block; }
   ul.hidden {
@@ -74,7 +80,7 @@ button.hamburger-menu {
 h1 {
   text-transform: uppercase;
   font-size: 3.5rem;
-  line-height: 36px; }
+  line-height: 3.5rem; }
 
 h2 {
   text-transform: uppercase;
@@ -115,13 +121,20 @@ p {
   color: white;
   border-radius: 7px;
   padding: 10px 10px;
+  cursor: pointer;
   text-transform: uppercase;
   margin-right: 10px;
   font-weight: 700; }
 
 footer p {
-  font-size: 1rem; }
+  font-size: 1.6rem; }
 
+/*
+******************************
+*        MEDIA QUERIES       *
+******************************
+
+*/
 @media (min-width: 800px) {
   .grid__wrapper {
     display: grid;
@@ -161,15 +174,39 @@ footer p {
       display: inline;
       font-weight: 700;
       font-family: "Barlow Condensed", sans-serif;
-      margin-left: 40px;
+      margin-left: 70px;
       text-transform: uppercase; }
+      ul li.navigation--separator {
+        display: block;
+        font-size: 1rem;
+        color: #a0a1ac; }
     ul li:last-child {
       border: none;
       color: #a0a1ac; }
     ul.hidden {
-      display: block; }
+      display: flex;
+      align-items: center; }
 
   .hamburger-menu {
-    display: none; } }
+    display: none; }
+
+  h1 {
+    font-size: 8rem;
+    line-height: 8rem; }
+
+  p {
+    font-size: 4rem;
+    padding-right: 30px; }
+
+  .button--red {
+    font-size: 2rem;
+    padding: 20px 20px;
+    text-transform: uppercase;
+    margin-right: 10px;
+    font-weight: 700; }
+
+  p.paragraph--uppercase {
+    font-size: 2rem;
+    letter-spacing: 0.5rem; } }
 
 /*# sourceMappingURL=styles.css.map */
