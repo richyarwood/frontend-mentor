@@ -20,7 +20,8 @@
     <header>
       <div><img src="./images/logo.svg" alt="Site Logo"></div>
       <nav role="navigation hidden" aria-expanded="false">
-        <button class="hamburger-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        <button class="hamburger-menu" onclick="toggleMenu()" role="button"
+          aria-label="Mobile navigation menu button"><i class="fas fa-bars"></i></button>
         <ul class="navigation hidden">
           <li><a href="#">Product</a></li>
           <li><a href="#">Features</a></li>
@@ -44,28 +45,27 @@
           Monograph Dashboard
         </h2>
       </div>
-
       <h1>
         Powerful insights into your team
       </h1>
-      <p>
+      <h3>
         Project planning and time tracking for agile teams
-      </p>
-      <button class="button--red">
-        Schedule a demo
-      </button>
-      <p class="paragraph--uppercase">
-        to see a preview
-      </p>
+      </h3>
+      <div class="button__submit--wrapper">
+        <button class="button--red" role="button" aria-label="Schedule demo button">
+          Schedule a demo
+        </button>
+        <p class="paragraph--uppercase">
+          to see a preview
+        </p>
+      </div>
     </section>
-
     <footer>
       <p class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
         Coded by <a href="https://richyarwood.co.uk">Richard Yarwood</a>.
       </p>
     </footer>
-
   </div>
 
   <script>

@@ -16,29 +16,28 @@ html {
 
 body {
   font-family: $secondary-font;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin: 0;
   position: relative;
   
   &::before {
     background-color: $light-greyish-blue;
-    content: "";
-    width: 100%;
-    height: 100%;
     border-radius: 35px;
+    content: "";
+    height: 100%;
     position: absolute;
     right: 0;
     top: 0;
     transform: translate(50%, -50%);
+    width: 100%;
     z-index: -10;
   }
 }
 
-
 header {
+  margin: 20px 0 30px 0;
   position: relative;
   width: 100%;
-  margin: 20px 0 30px 0;
 }
 
 header,
@@ -46,6 +45,8 @@ section,
 footer {
   padding: 0 30px;
 }
+
+// NAVIGATION STYLES ==============================
 
 ul {
   background-color: hsl(360, 100%, 100%);
@@ -63,19 +64,35 @@ ul {
   width: 300px;
 
   li {
-    text-transform: uppercase;
-    padding: 20px 0;
-    font-weight: 700;
     font-family: $secondary-font;
+    font-weight: 700;
+    padding: 20px 0;
+    text-transform: uppercase;
     
     &.navigation--separator {
       display: none;
     }
     
     a {
-      text-decoration: none;
       color: hsl(360, 0%, 0%);
+      position: relative;
+      text-decoration: none;
 
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: hsl(360, 0%, 0%);
+        bottom: -4px;
+        left: 0px;
+        transform: scaleX(0);
+        transition: transform 0.3s ease 0s;
+      }
+
+      &:hover::before {
+        transform: scaleX(1);
+      }
     }
 
     &:last-child {
@@ -83,11 +100,15 @@ ul {
       
       a {
         color: $greyish-blue;
+
+        &::before {
+          background-color: $greyish-blue;
+        }
       }
+
     }
 
   }
-
 
   &.active {
     display: block;
@@ -95,13 +116,6 @@ ul {
 
   &.hidden {
     display: none;
-  }
-}
-
-.hero-image {
-  img {
-    width: 100%;
-    margin-bottom: 60px;
   }
 }
 
@@ -119,46 +133,55 @@ button {
 
 }
 
+// NAVIGATION STYLES END ==========================
+
+.hero-image {
+  img {
+    margin-bottom: 60px;
+    width: 100%;
+  }
+}
+
 h1 {
-  text-transform: uppercase;
   font-size: 3.5rem;
   line-height: 3.5rem;
+  text-transform: uppercase;
 }
 
 h2 {
-  text-transform: uppercase;
   color: $greyish-blue;
   font-family: $body-font;
-  font-size: 1.3rem;
-  margin: 0 0 0 10px;
+  font-size: 1.6rem;
   letter-spacing: 2px;
+  margin: 0 0 0 10px;
+  text-transform: uppercase;
 }
 
-p {
-  font-family: $body-font;
+p,
+h3 {
   color: $dark-greyish-blue;
+  font-family: $body-font;
   font-size: 2rem;
 
   &.paragraph--uppercase {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    display: inline;
     color: $greyish-blue;
+    font-size: 1.2rem;
     letter-spacing: 0.9px;
+    text-transform: uppercase;
   }
 }
 
 .callout {
-  display: flex;
   align-items: center;
+  display: flex;
 
   .callout__button--black {
     background-color: $very-dark-blue;
     border-radius: 50px;
     color: hsl(360, 100%, 100%);
     font-weight: 700;
-    height: 25px;
-    padding: 3px;
+    height: 30px;
+    padding: 4px;
     text-align: center;
     text-transform: uppercase;
     width: 50px;
@@ -167,23 +190,36 @@ p {
 
 .button {
 
+  &__submit--wrapper {
+    display: flex;
+    margin-top: 30px;
+  }
+
   &--red {
     background-color: hsl(0, 100%, 68%);
-    display: inline-block;
-    color: hsl(0,100%,100%);
     border-radius: 7px;
-    padding: 10px 10px;
+    color: hsl(0,100%,100%);
     cursor: pointer;
-    text-transform: uppercase;
-    margin-right: 10px;
     font-weight: 700;
+    margin-right: 10px;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    transition: all≥ 0.2s ease-in-out;
+
+    &:hover {
+      background-color: hsl(0, 100%, 78%);
+      transform: scale(1.01);
+      box-shadow: 0px 10px 10px -10px rgba(97,94,94,0.75);
+    }
   }
 }
 
 footer {
 
+  margin-top: 30px;
+
   p {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
 }
@@ -196,10 +232,14 @@ footer {
 */
 @media (min-width: 800px) {
 
+  // GRID ================================
+
   .grid__wrapper {
+    align-content: stretch;
     display: grid;
     grid-template-rows: 100px auto 100px;
     grid-template-columns: 1fr 1fr;
+    height: 100vh;
     max-width: 1440px;
 
     grid-template-areas: 
@@ -209,33 +249,39 @@ footer {
   }
 
   header {
-    grid-area: head;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    display: flex;
+    grid-area: head;
+    justify-content: space-between;
   }
 
   .grid--left {
-    grid-area: main-left;
     align-self: center;
+    grid-area: main-left;
   }
 
   .grid--right {
-    grid-area: main-right;
     align-self: center;
+    grid-area: main-right;
   }
 
   footer {
     grid-area: footer;
   }
 
+  // GRID END ============================
+
+  h1 {
+    margin: 20px 0;
+  }
+
   ul {
     background: none;
     box-shadow: none;
-    position: static;
     font-size: 2rem;
     margin: 0;
     padding: 20px;
+    position: static;
     text-align: center;
     transform: none;
     width: 100%;
@@ -248,9 +294,9 @@ footer {
       text-transform: uppercase;
 
       &.navigation--separator {
+        color: $greyish-blue;
         display: block;
         font-size: 1rem;
-        color: $greyish-blue;
       }
     }
   
@@ -260,8 +306,8 @@ footer {
     }
   
     &.hidden {
-      display: flex;
       align-items: center;
+      display: flex;
     }
   }
 
@@ -274,28 +320,43 @@ footer {
     line-height: 8rem;
   }
 
-  p {
-    font-size: 4rem;
-    padding-right: 30px;
+  h3 {
+    font-size: 2.5rem;
+    padding-right: 100px;
+  }
+
+  .hero-image {
+    img {
+      margin: 0;
+    }
   }
 
   .button {
 
     &--red {
-      font-size: 2rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-right: 10px;
       padding: 20px 20px;
       text-transform: uppercase;
-      margin-right: 10px;
-      font-weight: 700;
     }
   }
   
   p {
   
     &.paragraph--uppercase {
-      font-size: 2rem;
-      letter-spacing: 0.5rem;
+      font-size: 1.8rem;
+      letter-spacing: 0.4rem;
     }
   }
   
+}
+
+@media (min-width: 1200px) {
+
+  h3 {
+    font-size: 2.5rem;
+    padding-right: 200px;
+  }
+
 }

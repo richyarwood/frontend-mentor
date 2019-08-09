@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box; }
 
@@ -6,25 +7,25 @@ html {
 
 body {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin: 0;
   position: relative; }
   body::before {
     background-color: #eef3f6;
-    content: "";
-    width: 100%;
-    height: 100%;
     border-radius: 35px;
+    content: "";
+    height: 100%;
     position: absolute;
     right: 0;
     top: 0;
     transform: translate(50%, -50%);
+    width: 100%;
     z-index: -10; }
 
 header {
+  margin: 20px 0 30px 0;
   position: relative;
-  width: 100%;
-  margin: 20px 0 30px 0; }
+  width: 100%; }
 
 header,
 section,
@@ -46,27 +47,38 @@ ul {
   transform: translateX(-50%);
   width: 300px; }
   ul li {
-    text-transform: uppercase;
-    padding: 20px 0;
+    font-family: "Barlow Condensed", sans-serif;
     font-weight: 700;
-    font-family: "Barlow Condensed", sans-serif; }
+    padding: 20px 0;
+    text-transform: uppercase; }
     ul li.navigation--separator {
       display: none; }
     ul li a {
-      text-decoration: none;
-      color: black; }
+      color: black;
+      position: relative;
+      text-decoration: none; }
+      ul li a::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        bottom: -4px;
+        left: 0px;
+        transform: scaleX(0);
+        transition: transform 0.3s ease 0s; }
+      ul li a:hover::before {
+        transform: scaleX(1); }
     ul li:last-child {
       border-top: 1px solid #a0a1ac; }
       ul li:last-child a {
         color: #a0a1ac; }
+        ul li:last-child a::before {
+          background-color: #a0a1ac; }
   ul.active {
     display: block; }
   ul.hidden {
     display: none; }
-
-.hero-image img {
-  width: 100%;
-  margin-bottom: 60px; }
 
 button.hamburger-menu {
   background: none;
@@ -77,57 +89,71 @@ button.hamburger-menu {
   right: 15px;
   top: 0.5px; }
 
+.hero-image img {
+  margin-bottom: 60px;
+  width: 100%; }
+
 h1 {
-  text-transform: uppercase;
   font-size: 3.5rem;
-  line-height: 3.5rem; }
+  line-height: 3.5rem;
+  text-transform: uppercase; }
 
 h2 {
-  text-transform: uppercase;
   color: #a0a1ac;
   font-family: "Barlow", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
   margin: 0 0 0 10px;
-  letter-spacing: 2px; }
+  text-transform: uppercase; }
 
-p {
-  font-family: "Barlow", sans-serif;
+p,
+h3 {
   color: #5b5f71;
+  font-family: "Barlow", sans-serif;
   font-size: 2rem; }
-  p.paragraph--uppercase {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    display: inline;
+  p.paragraph--uppercase,
+  h3.paragraph--uppercase {
     color: #a0a1ac;
-    letter-spacing: 0.9px; }
+    font-size: 1.2rem;
+    letter-spacing: 0.9px;
+    text-transform: uppercase; }
 
 .callout {
-  display: flex;
-  align-items: center; }
+  align-items: center;
+  display: flex; }
   .callout .callout__button--black {
     background-color: #242942;
     border-radius: 50px;
     color: white;
     font-weight: 700;
-    height: 25px;
-    padding: 3px;
+    height: 30px;
+    padding: 4px;
     text-align: center;
     text-transform: uppercase;
     width: 50px; }
 
+.button__submit--wrapper {
+  display: flex;
+  margin-top: 30px; }
 .button--red {
   background-color: #ff5c5c;
-  display: inline-block;
-  color: white;
   border-radius: 7px;
-  padding: 10px 10px;
+  color: white;
   cursor: pointer;
-  text-transform: uppercase;
+  font-weight: 700;
   margin-right: 10px;
-  font-weight: 700; }
+  padding: 10px 10px;
+  text-transform: uppercase;
+  transition: all≥ 0.2s ease-in-out; }
+  .button--red:hover {
+    background-color: #ff8f8f;
+    transform: scale(1.01);
+    box-shadow: 0px 10px 10px -10px rgba(97, 94, 94, 0.75); }
 
-footer p {
-  font-size: 1.6rem; }
+footer {
+  margin-top: 30px; }
+  footer p {
+    font-size: 1.3rem; }
 
 /*
 ******************************
@@ -137,36 +163,41 @@ footer p {
 */
 @media (min-width: 800px) {
   .grid__wrapper {
+    align-content: stretch;
     display: grid;
     grid-template-rows: 100px auto 100px;
     grid-template-columns: 1fr 1fr;
+    height: 100vh;
     max-width: 1440px;
     grid-template-areas: "head head" "main-left main-right" "footer footer"; }
 
   header {
-    grid-area: head;
+    align-items: center;
     display: flex;
-    justify-content: space-between;
-    align-items: center; }
+    grid-area: head;
+    justify-content: space-between; }
 
   .grid--left {
-    grid-area: main-left;
-    align-self: center; }
+    align-self: center;
+    grid-area: main-left; }
 
   .grid--right {
-    grid-area: main-right;
-    align-self: center; }
+    align-self: center;
+    grid-area: main-right; }
 
   footer {
     grid-area: footer; }
 
+  h1 {
+    margin: 20px 0; }
+
   ul {
     background: none;
     box-shadow: none;
-    position: static;
     font-size: 2rem;
     margin: 0;
     padding: 20px;
+    position: static;
     text-align: center;
     transform: none;
     width: 100%; }
@@ -177,15 +208,15 @@ footer p {
       margin-left: 70px;
       text-transform: uppercase; }
       ul li.navigation--separator {
+        color: #a0a1ac;
         display: block;
-        font-size: 1rem;
-        color: #a0a1ac; }
+        font-size: 1rem; }
     ul li:last-child {
       border: none;
       color: #a0a1ac; }
     ul.hidden {
-      display: flex;
-      align-items: center; }
+      align-items: center;
+      display: flex; }
 
   .hamburger-menu {
     display: none; }
@@ -194,19 +225,26 @@ footer p {
     font-size: 8rem;
     line-height: 8rem; }
 
-  p {
-    font-size: 4rem;
-    padding-right: 30px; }
+  h3 {
+    font-size: 2.5rem;
+    padding-right: 100px; }
+
+  .hero-image img {
+    margin: 0; }
 
   .button--red {
-    font-size: 2rem;
-    padding: 20px 20px;
-    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 700;
     margin-right: 10px;
-    font-weight: 700; }
+    padding: 20px 20px;
+    text-transform: uppercase; }
 
   p.paragraph--uppercase {
-    font-size: 2rem;
-    letter-spacing: 0.5rem; } }
+    font-size: 1.8rem;
+    letter-spacing: 0.4rem; } }
+@media (min-width: 1200px) {
+  h3 {
+    font-size: 2.5rem;
+    padding-right: 200px; } }
 
 /*# sourceMappingURL=styles.css.map */
